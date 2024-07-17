@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["Scripts"] = new string[] {
+        "/js/index.js"
+    };
+}
+
+<div class="container w-75 p-5 bg-white rounded enter-link-controls">
+    <h1>Shorter your link!</h1>
+    <div class="mb-3 mt-3">
+        <div class="input-group">
+            <label class="input-group-text" for="linkInput">Your link:</label>
+            <input class="form-control" id="linkInput" type="url"></input>
+        </div>
+    </div>
+    <button id="shorterButton" type="button" class="btn btn-primary">Shorter!</button>
+    <div class="mb-1 my-2">
+        <h5>Result:</h5>
+        <div id="resultText"></div>
+    </div>
+</div>
