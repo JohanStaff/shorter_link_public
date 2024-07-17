@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["Scripts"] = new string[] {
+        "/js/index.js"
+    };
+}
+
+<div class="container shadow-sm w-75 p-5 bg-white rounded enter-link-controls">
+    <h1>Link Shorten Service</h1>
+    <p>Quick and easy way to shorten your links</p>
+    <div class="mb-3 mt-3">
+        <div class="input-group">
+            <label class="input-group-text" for="linkInput"><strong>Paste Your Link Here</strong></label>
+            <input class="form-control" id="linkInput" type="url"></input>
+        </div>
+    </div>
+    <button id="shorterButton" type="button" class="btn btn-primary">Shorten</button>
+    <div class="mb-1 my-2 text-center">
+        <div id="resultText"> </div>
+        <div>
+            <a class="btn btn-secondary d-none" id="copyButton">Copy</a>
+        </div>
+    </div>
+</div>
+
+<div class="container shadow-sm w-75 my-4 p-5 bg-white rounded enter-link-controls">
+    <h2>How Does It Work?</h2>
+    <p>The Link Shorten Service lets you make your a long link shorter. Just paste it into the textfield and click "Shorten" to make magic.</p>
+    <h2>Are There Any Limits?</h2>
+    <p>The number of links you are able to shorten is limited to your subscription. In the free subscription, the number is strictly limited.</p>
+    <h2>Can I Track Links?</h2>
+    <p>Sure! You can sign up the service and track statistics of your links.</p>
+</div>

@@ -1,0 +1,50 @@
+﻿@using ShorterLink.Code.Links;
+@using ShorterLink.Code.DataObjects;
+@using ShorterLink.Code.DataObjects.Links;
+@inject LinksOverall _links;
+@inject UserSession _session;
+
+@{
+    ViewData["Title"] = "Links History";
+
+    LinkOverallObject[] links = _links.GetLinksByUser(_session.User.id).ToArray<LinkOverallObject>();
+    int linksCount = links.Length;
+    uint overallStatistics = 0;
+
+    string GetLink(string hash) {
+        return $"{Context.Request.Host.Value}/go/{hash}";
+    }
+}
+
+<div class="container-fluid shadow-sm p-5 bg-white rounded enter-link-controls">
+    <h1>Links History</h1>
+    <table class="table table-bordered">
+        @if(linksCount == 0) {
+            <p>You've got no links to be displayed on this page :(... <a href="/">add some</a></p>
+        } else { 
+            <tr>
+                <th>Original Url</th>
+                <th>Short Link</th>
+                <th>Visits</th>
+                <th>Active</th>
+                <th>Action</th>
+            </tr>
+            @foreach(var link in links) {
+                overallStatistics += link.stats.visits ?? 0;
+            <tr>
+                <td>@link.link.original_url</td>
+                <td>@GetLink(link.link.hash_url)</td>
+                <td>@link.stats.visits</td>
+                <td> <input type="checkbox" class="form-check-input" id="activeCheckbox" @(link.link.active ? "checked" : "") disabled></td>
+                <td><a href="/links/edit/@link.link.hash_url" class="btn btn-primary">Edit</a></td>
+            </tr>
+            }
+            <tr>
+                <td colspan="2"><strong>Total:</strong></td>
+                <td>@overallStatistics</td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+    </table>
+</div>    

@@ -1,0 +1,41 @@
+﻿@using ShorterLink.Code.Links;
+@using ShorterLink.Code.DataObjects;
+@using ShorterLink.Code.DataObjects.Links;
+@using ShorterLink.Code.Subscriptions.Logic;
+@inject LinksOverall _links;
+@inject UserSession _session;
+@inject ISubscriptionLogic _subscription;
+
+@{
+    ViewData["Title"] = "Links History";
+    ViewData["Scripts"] = new string[] {
+      "/js/links/link_edit.js"
+    };
+    var link = (LinkObject)Model.HashedLink;
+}
+
+<div class="container shadow-sm w-75 p-5 bg-white rounded enter-link-controls">
+  <h1>Edit Your Link</h1>
+  <div class="mb-3">
+    <label for="originalUrl" class="form-label" aria-disabled="true">Original URL</label>
+    <input type="url" class="form-control" id="originalUrl" value="@(link.original_url)" disabled>
+  </div>
+  <div class="mb-3">
+    <label for="hashUrlInput" class="form-label" aria-disabled="true">Hashed URL</label>
+    <input type="url" class="form-control" id="hashUrlInput"  aria-describedby="emailHelp" value="@(link.hash_url)" disabled>
+  </div>
+  <div class="mb-3">
+    <label for="maskUrlInput" class="form-label" aria-disabled=")">Alias</label>
+    <input type="url" class="form-control" id="maskUrlInput" @(_subscription.IsAllowed(UserActionCode.LinkAddAlias) ? "" : "disabled") aria-describedby="maskUrl">
+  </div>
+  <div class="mb-3">
+    <label for="activeCheckbox">Active</label>
+    <input type="checkbox" id="activeCheckbox" @(link.active ? "checked" : "")>
+  </div>
+  <div class="mb-3">
+    <span style="color: red" id="alertText"></span>
+  </div>
+  <div class="mb-3">
+    <a class="btn btn-primary" id="saveButton">Save</a>
+  </div>
+</div>

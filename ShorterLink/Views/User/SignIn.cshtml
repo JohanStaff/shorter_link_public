@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Sign In";
+    ViewData["Scripts"] = new string[] {
+      "/js/sign_in.js"
+    };
+}
+
+<div class="container shadow-sm w-75 p-5 bg-white rounded enter-link-controls">
+  <h1>Sign In</h1>
+  <form id="signInForm">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" required>
+      <div id="pp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="passwordInput" required>
+    </div>
+    <div class="mb-3">
+      <span style="color: red" id="alertText"></span>
+    </div>
+    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

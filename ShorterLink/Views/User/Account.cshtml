@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Account";
+}
+
+<div class="container shadow-sm w-75 p-5 bg-white rounded enter-link-controls">
+  <h1>Account</h1>
+  <h2>Basic Info</h2>
+
+  <div class="accountGroup">
+    <div id="username"><span><strong>Username:</strong> @Context.Session.GetString("username")</span></div>
+    <div id="email"><span><strong>Email:</strong> @Context.Session.GetString("email")</span><a href="/User/ChangeEmail" class="btn btn-primary ms-1">Change</a></div>
+  </div>
+
+  <h2 class="mt-5">Security</h2>
+  <div><a href="/User/ResetPassword" class="btn btn-primary">Change Password</a></div>
+  
+  <h2 class="mt-5">Actions</h2>
+  <div id="singout"><a class="btn btn-danger" href="/user/signout">Sign Out</a></div>
+</div> 

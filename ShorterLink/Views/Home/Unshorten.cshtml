@@ -1,0 +1,30 @@
+﻿@using ShorterLink.Code.Links;
+@using ShorterLink.Code.DataObjects;
+@using ShorterLink.Code.DataObjects.Links;
+@inject LinksOverall _links;
+@inject UserSession _session;
+
+@{
+    ViewData["Title"] = "Unshorten";
+    ViewData["Scripts"] = new string[] {
+        "/js/unshorten.js"
+    };
+}
+
+<div class="container-fluid shadow-sm p-5 bg-white rounded enter-link-controls">
+    <h1>Unshorten Link</h1>
+    <p>You can unshorten a link generated on this service here</p>
+    <div class="mb-3 mt-3">
+        <div class="input-group">
+            <label class="input-group-text" for="linkInput"><strong>Paste Shorten Link Here</strong></label>
+            <input class="form-control" id="linkInput" type="url"></input>
+        </div>
+        <button id="unshortenButton" type="button" class="btn btn-primary">Unshorten</button>
+        <div class="mb-1 my-2 text-center">
+            <div id="resultText"> </div>
+            <div>
+                <a class="btn btn-secondary d-none" id="copyButton">Copy</a>
+            </div>
+        </div>
+    </div>
+</div>    

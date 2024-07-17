@@ -1,0 +1,34 @@
+﻿@using ShorterLink.Code.Subscriptions;
+@inject SubscriptionsService _subscriptionService;
+@{
+    ViewData["Title"] = "Home Page";
+    ViewData["Scripts"] = new string[] {
+        "/js/index.js"
+    };
+    var subscriptions = _subscriptionService.GetGroups(1);
+}
+
+<div class="container shadow-sm w-75 p-5 bg-white rounded enter-link-controls">
+    <h1>Pricing</h1>
+    <div class="row mb-3 mb-sm-0">
+        @foreach(var subscription in subscriptions) { 
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@subscription.title</h5>
+                    <p class="card-text">@subscription.description</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@((int)(subscription.period / 31) <= 1 ? "1 month" : $"{(int)(subscription.period / 31)} months") period</li>
+                    <li class="list-group-item">@subscription.links_per_month links per month</li>
+                    <li class="list-group-item @(subscription.alias_edition ? "" : "text-black-50")">@(subscription.alias_edition ? "Alias edition" : "No alias edition")</li>
+                </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><span class="fs-3">$@(subscription.price)</span></li>
+                </ul>
+                <a class="btn btn-primary" style="margin: 10px auto 10px; width: 8rem;" href="purchase/@(subscription.id)">Buy now</a>
+            </div>
+        </div>
+        }
+    </div>
+</div>

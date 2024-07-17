@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Sign Up";
+    ViewData["Scripts"] = new string[] {
+      "/js/sign_up.js"
+    };
+}
+
+<div class="container shadow-sm w-75 p-5 bg-white rounded enter-link-controls">
+  <h1>Sign Up</h1>
+  <form id="signUpForm">
+    <div class="mb-3">
+      <label for="usernameInput" class="form-label">Username</label>
+      <input type="text" class="form-control" id="usernameInput" aria-describedby="emailHelp" required>
+    </div>
+    <div class="mb-3">
+      <label for="emailInput" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" required>
+    </div>
+    <div class="mb-3">
+      <label for="passwordInput" class="form-label">Password</label>
+      <input type="password" class="form-control" id="passwordInput" required>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="agreeToPolicies" required>
+      <label class="form-check-label" for="agreeToPolicies">I agree to the <a href="Privacy">Privacy Policy</a></label>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="agreeToTermsOfService" required>
+      <label class="form-check-label" for="agreeToTermsOfService">I agree to the <a href="TermsOfService">Terms of Service</a></label>
+    </div>
+    <div class="mb-3">
+      <span style="color: red" id="alertText"></span>
+    </div>
+    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
